@@ -1,19 +1,16 @@
 package com.notes.main;
 
 import com.notes.util.NewForm;
+import com.notes.util.Response;
+import com.notes.util.SaveBeforeExit;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
-
-import java.awt.*;
-
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,13 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.Window;
 
-import java.awt.TextArea;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -63,11 +57,28 @@ public class Controller implements Initializable {
 
 
     public void closeApp(ActionEvent actionEvent) {
+//        if(unSaved) {
+            Response response = SaveBeforeExit.display();
+//        }
         Platform.exit();
     }
 
     public void saveApp(ActionEvent actionEvent) {
-
+        ObservableList<Node> children = centerVBox.getChildren();
+        Label headingLabel = (Label) centerVBox.getChildren().get(0);
+        String heading = headingLabel.getText();
+        List<String> subHeadingList = new ArrayList<>();
+        for(Node node: children) {
+            if(node instanceof AnchorPane) {
+                VBox subheadingVBox = (VBox) ((AnchorPane) node).getChildren().get(0);
+                HBox subheadingHBox = (HBox) subheadingVBox.getChildren().get(0);
+                Label subheadingLabel = (Label) subheadingHBox.getChildren().get(0);
+                subHeadingList.add(subheadingLabel.getText());
+            }
+        }
+        for(String s: subHeadingList) {
+            System.out.println(s);
+        }
     }
 
     public void addSubHeading(ActionEvent actionEvent) {

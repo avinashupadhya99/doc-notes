@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="165.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.notes.util.SaveBeforeExit">
+    <children>
+        <VBox fx:id="NewFormVBox" prefHeight="165.0" prefWidth="500.0">
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                    <children>
+                        <ImageView fx:id="warningImage" fitHeight="57.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../resources/icons/warning.jpg" />
+                            </image>
+                        </ImageView>
+                        <Label text="Do you want to save changes before exiting?">
+                            <HBox.margin>
+                                <Insets top="20.0" />
+                            </HBox.margin>
+                        </Label>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="30.0" right="30.0" top="40.0" />
+                    </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER" prefHeight="114.0" prefWidth="500.0" spacing="75.0">
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="dontsave" mnemonicParsing="false" onAction="#sendResponse" text="Don't Save">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="save" mnemonicParsing="false" onAction="#sendResponse" text="Save">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="cancel" mnemonicParsing="false" onAction="#sendResponse" text="Cancel">
+                            <font>
+                                <Font size="15.0" />
+                            </font>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</Pane>
