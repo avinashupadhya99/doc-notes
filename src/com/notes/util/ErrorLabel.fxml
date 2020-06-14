@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox alignment="CENTER" prefHeight="114.0" prefWidth="500.0">
+   <children>
+      <Label style="-fx-font-weight: bold;" text="Error: " textFill="RED">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" text="Sub Heading cannot be empty" textFill="RED">
+         <HBox.margin>
+            <Insets top="2.0" />
+         </HBox.margin>
+      </Label>
+   </children>
+</HBox>
