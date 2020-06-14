@@ -1,8 +1,8 @@
 package com.notes.main;
 
-import com.notes.util.NewForm;
+import com.notes.helperbox.NewForm;
+import com.notes.helperbox.SaveAndExit;
 import com.notes.util.Response;
-import com.notes.util.SaveBeforeExit;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -39,6 +39,7 @@ public class Controller implements Initializable {
     public ScrollPane mainScrollPane;
     public VBox centerVBox;
     public MenuItem Close;
+    private boolean unsaved = true;
 
 
     @Override
@@ -57,10 +58,15 @@ public class Controller implements Initializable {
 
 
     public void closeApp(ActionEvent actionEvent) {
-//        if(unSaved) {
-            Response response = SaveBeforeExit.display();
-//        }
-        Platform.exit();
+        Response response = Response.CANCEL;
+        if(unsaved) {
+            response = SaveAndExit.display();
+        }
+        
+        if(!unsaved || response==Response.NO){
+            Platform.exit();
+        }
+            
     }
 
     public void saveApp(ActionEvent actionEvent) {
@@ -89,7 +95,7 @@ public class Controller implements Initializable {
         if(display!=null && display.length()>0) {
             Parent root = null;
             try {
-                root = FXMLLoader.load(Controller.class.getResource("SubHeading.fxml"));
+                root = FXMLLoader.load(Controller.class.getResource("../util/SubHeading.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

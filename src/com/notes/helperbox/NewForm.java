@@ -1,6 +1,5 @@
-package com.notes.util;
+package com.notes.helperbox;
 
-import com.notes.main.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +12,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class NewForm {
