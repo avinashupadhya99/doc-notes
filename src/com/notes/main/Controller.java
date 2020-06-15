@@ -1,5 +1,6 @@
 package com.notes.main;
 
+import com.notes.helperbox.EditForm;
 import com.notes.helperbox.NewForm;
 import com.notes.helperbox.SaveAndExit;
 import com.notes.util.Response;
@@ -21,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import javax.swing.text.LabelView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -103,8 +105,7 @@ public class Controller implements Initializable {
             mainVBox.getChildren().add(root);
             HBox hBox = (HBox) root.getChildrenUnmodifiable().get(0);
             VBox vBox = (VBox) hBox.getChildren().get(0);
-            HBox hBox1 = (HBox) vBox.getChildren().get(0);
-            Label subHeadingTitle = (Label) hBox1.getChildren().get(0);
+            Label subHeadingTitle = (Label) vBox.getChildren().get(0);
             subHeadingTitle.setText(display);
         }
 
@@ -112,5 +113,16 @@ public class Controller implements Initializable {
 
 
     public void editSubHeading(ActionEvent actionEvent) {
+        Button btn = (Button) actionEvent.getSource();
+        VBox sidebar  = (VBox) btn.getParent();
+        HBox hBox = (HBox) sidebar.getParent();
+        VBox vBox = (VBox) hBox.getChildren().get(0);
+
+        Label subHeadingTitle = (Label) vBox.getChildren().get(0);
+        String title = subHeadingTitle.getText();
+        title = EditForm.display(title);
+        if(title!=null && title.length()>0) {
+            subHeadingTitle.setText(title);
+        }
     }
 }
