@@ -1,0 +1,19 @@
+
+AnchorPane {
+    -fx-background-color: bbbbbb;
+}
+
+.sidebar {
+    -fx-background-color: aaaaaa;
+}
+
+.sidebar Button {
+    -fx-background-color: none;
+    -fx-font-weight: bold;
+    -fx-font-size: 15;
+}
+
+.sidebar Button:hover {
+    -fx-background-color: bbbbbb;
+    -fx-cursor: hand;
+}

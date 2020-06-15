@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -10,34 +11,46 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: bbbbbb;" VBox.vgrow="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.notes.main.Controller">
+<AnchorPane stylesheets="@../../../../resources/assets/stylesheets/style.css" VBox.vgrow="NEVER" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.notes.main.Controller">
     <VBox.margin>
         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </VBox.margin>
     <children>
-        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="578.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <HBox>
-                    <children>
-                        <Label prefHeight="30.0" HBox.hgrow="ALWAYS" text="">
-                            <font>
-                                <Font size="25.0" />
-                            </font>
-                        </Label>
-                        <Region prefHeight="30.0" prefWidth="261.0" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin></Region>
-                        <Button fx:id="addNewNotes" mnemonicParsing="false" onAction="#addNotes" text="Add notes" />
-                    </children>
-             <VBox.margin>
-                <Insets bottom="10.0" top="10.0" />
-             </VBox.margin>
-                </HBox>
-            </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" />
-         </padding>
-        </VBox>
+      <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+              <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="516.0" HBox.hgrow="ALWAYS">
+                  <children>
+                      <HBox spacing="10.0">
+                          <children>
+                              <Label prefHeight="30.0" text="" HBox.hgrow="ALWAYS">
+                                  <font>
+                                      <Font size="25.0" />
+                                  </font>
+                              </Label>
+                          </children>
+                   <VBox.margin>
+                      <Insets bottom="10.0" top="10.0" />
+                   </VBox.margin>
+                      </HBox>
+                  </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </padding>
+              </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="150.0" spacing="5.0" styleClass="sidebar" HBox.hgrow="NEVER">
+               <children>
+                  <Button fx:id="editSubHead" mnemonicParsing="false" onAction="#editSubHeading" text="Edit Sub Heading" VBox.vgrow="ALWAYS" />
+                  <Line endX="100.0" startX="-100.0" />
+                  <Button mnemonicParsing="false" text="Delete Sub Heading" />
+                  <Line endX="100.0" startX="-100.0" />
+                  <Button fx:id="addNewNotes" mnemonicParsing="false" onAction="#addNotes" text="Add Notes" />
+                  <Line endX="100.0" startX="-100.0" />
+                  <Button mnemonicParsing="false" text="Add command" />
+                  <HBox alignment="CENTER_LEFT" />
+                  <Line endX="100.0" startX="-100.0" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
     </children>
 </AnchorPane>

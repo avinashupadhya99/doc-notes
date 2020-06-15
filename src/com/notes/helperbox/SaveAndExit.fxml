@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="64.0" fitWidth="187.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../resources/icons/warning.jpg" />
+                        <Image url="@../../../../resources/assets/icons/warning.jpg" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" text="Do you want to save changes before exiting?">

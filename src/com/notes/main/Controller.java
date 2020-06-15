@@ -50,8 +50,9 @@ public class Controller implements Initializable {
     @FXML
     public void addNotes(ActionEvent e) {
         Button btn = (Button) e.getSource();
-        HBox subHeadingHBox = (HBox) btn.getParent();
-        VBox subHeadingVBox = (VBox) subHeadingHBox.getParent();
+        VBox sidebar = (VBox) btn.getParent();
+        HBox subHeadingHBox = (HBox) sidebar.getParent();
+        VBox subHeadingVBox = (VBox) subHeadingHBox.getChildren().get(0);
         TextField newNotes = new TextField();
         subHeadingVBox.getChildren().add(newNotes);
     }
@@ -100,13 +101,16 @@ public class Controller implements Initializable {
                 e.printStackTrace();
             }
             mainVBox.getChildren().add(root);
-            VBox vBox = (VBox) root.getChildrenUnmodifiable().get(0);
-            HBox hBox = (HBox) vBox.getChildren().get(0);
-            Label subHeadingTitle = (Label) hBox.getChildren().get(0);
+            HBox hBox = (HBox) root.getChildrenUnmodifiable().get(0);
+            VBox vBox = (VBox) hBox.getChildren().get(0);
+            HBox hBox1 = (HBox) vBox.getChildren().get(0);
+            Label subHeadingTitle = (Label) hBox1.getChildren().get(0);
             subHeadingTitle.setText(display);
         }
 
     }
 
 
+    public void editSubHeading(ActionEvent actionEvent) {
+    }
 }
