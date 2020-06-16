@@ -1,5 +1,6 @@
 package com.notes.main;
 
+import com.notes.helperbox.ConfirmBox;
 import com.notes.helperbox.EditForm;
 import com.notes.helperbox.NewForm;
 import com.notes.helperbox.SaveAndExit;
@@ -133,5 +134,19 @@ public class Controller implements Initializable {
     }
 
     public void deleteSubHeading(ActionEvent actionEvent) {
+        Button btn = (Button) actionEvent.getSource();
+        VBox sidebar  = (VBox) btn.getParent();
+        HBox hBox = (HBox) sidebar.getParent();
+        VBox vBox = (VBox) hBox.getChildren().get(0);
+
+        Label subHeadingTitle = (Label) vBox.getChildren().get(0);
+        String title = subHeadingTitle.getText();
+        Response response = ConfirmBox.display("Delete SubHeading", "Do you really want to delete the sub heading \""+title+"\"?");
+
+        if(response==Response.YES) {
+            AnchorPane anchorPane = (AnchorPane) hBox.getParent();
+            VBox mainVBox = (VBox) anchorPane.getParent();
+            mainVBox.getChildren().remove(anchorPane);
+        }
     }
 }
