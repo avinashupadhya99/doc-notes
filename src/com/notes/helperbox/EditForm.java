@@ -1,5 +1,6 @@
 package com.notes.helperbox;
 
+import com.notes.main.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,6 +13,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 public class EditForm {
     public TextField subHeading;
@@ -49,21 +51,31 @@ public class EditForm {
 
     public void getSubHeading(ActionEvent actionEvent) {
         Button src = (Button) actionEvent.getSource();
+        if(EditFormVBox.getChildren().size()>3) {
+            EditFormVBox.getChildren().remove(3);
+        }
+        Parent errLabel = null;
+        try {
+            errLabel = FXMLLoader.load(NewForm.class.getResource("../util/ErrorLabel.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if(subHeading.getText().length()>0 || src==cancel) {
             if(src==save) {
-                SubHeading = subHeading.getText();
+                String subHeadingTitle = subHeading.getText();
+                if(!subHeadingTitle.equals(OldTitle) && Controller.subHeadingList.contains(subHeadingTitle)){
+                    Label label = (Label) errLabel.getChildrenUnmodifiable().get(1);
+                    label.setText("SubHeading already exists");
+                    EditFormVBox.getChildren().add(errLabel);
+                } else {
+                    SubHeading = subHeadingTitle;
+                    stage.close();
+                }
             } else {
                 SubHeading = OldTitle;
+                stage.close();
             }
-            stage.close();
         } else if(src==save) {
-            Parent errLabel = null;
-            try {
-                errLabel = FXMLLoader.load(NewForm.class.getResource("ErrorLabel.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Label errorLabel = new Label("Error: Sub Heading cannot be empty");
             EditFormVBox.getChildren().add(errLabel);
         }
 

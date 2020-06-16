@@ -9,16 +9,16 @@
 <?import javafx.scene.layout.*?>
 
 
-<HBox alignment="CENTER" prefHeight="114.0" prefWidth="500.0">
+<HBox fx:id="errLable" alignment="CENTER" prefHeight="114.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label style="-fx-font-weight: bold;" text="Error: " textFill="RED">
          <font>
-            <Font size="14.0" />
+            <Font size="14.0"/>
          </font>
       </Label>
       <Label alignment="CENTER" text="Sub Heading cannot be empty" textFill="RED">
          <HBox.margin>
-            <Insets top="2.0" />
+            <Insets top="2.0"/>
          </HBox.margin>
       </Label>
    </children>

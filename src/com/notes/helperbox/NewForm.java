@@ -1,5 +1,6 @@
 package com.notes.helperbox;
 
+import com.notes.main.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.util.HashSet;
 
 public class NewForm {
     public TextField subHeading;
@@ -45,21 +47,31 @@ public class NewForm {
 
     public void getSubHeading(ActionEvent actionEvent) {
         Button src = (Button) actionEvent.getSource();
+        if(NewFormVBox.getChildren().size()>2) {
+            NewFormVBox.getChildren().remove(2);
+        }
+        Parent errLabel = null;
+        try {
+            errLabel = FXMLLoader.load(NewForm.class.getResource("../util/ErrorLabel.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         if(subHeading.getText().length()>0 || src==cancel) {
             if(src==add) {
-                SubHeading = subHeading.getText();
+                String subHeadingTitle = subHeading.getText();
+                if(Controller.subHeadingList.contains(subHeadingTitle)){
+                    Label label = (Label) errLabel.getChildrenUnmodifiable().get(1);
+                    label.setText("SubHeading already exists");
+                    NewFormVBox.getChildren().add(errLabel);
+                } else {
+                    SubHeading = subHeadingTitle;
+                    stage.close();
+                }
             } else {
                 SubHeading = "";
+                stage.close();
             }
-            stage.close();
         } else if(src==add) {
-            Parent errLabel = null;
-            try {
-                errLabel = FXMLLoader.load(NewForm.class.getResource("ErrorLabel.fxml"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Label errorLabel = new Label("Error: Sub Heading cannot be empty");
             NewFormVBox.getChildren().add(errLabel);
         }
 

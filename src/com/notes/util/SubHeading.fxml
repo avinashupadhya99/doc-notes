@@ -34,7 +34,7 @@
                <children>
                   <Button fx:id="editSubHead" mnemonicParsing="false" onAction="#editSubHeading" text="Edit Sub Heading" VBox.vgrow="ALWAYS" />
                   <Line endX="100.0" startX="-100.0" />
-                  <Button mnemonicParsing="false" text="Delete Sub Heading" />
+                  <Button mnemonicParsing="false" onAction="#deleteSubHeading" text="Delete Sub Heading" />
                   <Line endX="100.0" startX="-100.0" />
                   <Button fx:id="addNewNotes" mnemonicParsing="false" onAction="#addNotes" text="Add Notes" />
                   <Line endX="100.0" startX="-100.0" />
