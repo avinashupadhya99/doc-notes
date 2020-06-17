@@ -6,6 +6,7 @@ import com.notes.helperbox.NewForm;
 import com.notes.helperbox.SaveAndExit;
 import com.notes.util.Response;
 import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,11 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -31,6 +28,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 
 public class Controller implements Initializable {
 
@@ -98,7 +96,6 @@ public class Controller implements Initializable {
         HBox btnHBox = (HBox) btn.getParent();
         VBox mainVBox = (VBox) btnHBox.getParent();
         String display = NewForm.display();
-        System.out.println(subHeadingList.size());
         if(display!=null && display.length()>0 && !subHeadingList.contains(display)) {
             Parent root = null;
             try {
@@ -125,7 +122,6 @@ public class Controller implements Initializable {
 
         Label subHeadingTitle = (Label) vBox.getChildren().get(0);
         String title = subHeadingTitle.getText();
-        System.out.println(this.subHeadingList.size());
         title = EditForm.display(title);
         if(title!=null && title.length()>0 && !subHeadingList.contains(title) ) {
             subHeadingTitle.setText(title);
@@ -147,6 +143,7 @@ public class Controller implements Initializable {
             AnchorPane anchorPane = (AnchorPane) hBox.getParent();
             VBox mainVBox = (VBox) anchorPane.getParent();
             mainVBox.getChildren().remove(anchorPane);
+            subHeadingList.remove(title);
         }
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
@@ -20,10 +21,13 @@
          <children>
               <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="516.0" HBox.hgrow="ALWAYS">
                   <children>
-                        <Label prefHeight="30.0" text="">
+                        <Label mouseTransparent="true" prefHeight="30.0" text="" wrapText="true">
                             <font>
                                 <Font size="25.0" />
                             </font>
+                     <cursor>
+                        <Cursor fx:constant="TEXT" />
+                     </cursor>
                         </Label>
                   </children>
                <padding>

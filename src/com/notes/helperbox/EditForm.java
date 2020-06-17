@@ -50,7 +50,12 @@ public class EditForm {
     }
 
     public void getSubHeading(ActionEvent actionEvent) {
-        Button src = (Button) actionEvent.getSource();
+        Button src = null;
+        if(actionEvent.getSource() instanceof Button) {
+            src = (Button) actionEvent.getSource();
+        } else if(actionEvent.getSource() instanceof TextField) {
+            src = save;
+        }
         if(EditFormVBox.getChildren().size()>3) {
             EditFormVBox.getChildren().remove(3);
         }

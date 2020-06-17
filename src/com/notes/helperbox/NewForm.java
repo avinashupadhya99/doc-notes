@@ -46,7 +46,13 @@ public class NewForm {
     }
 
     public void getSubHeading(ActionEvent actionEvent) {
-        Button src = (Button) actionEvent.getSource();
+        Button src = null;
+        if(actionEvent.getSource() instanceof Button) {
+            src = (Button) actionEvent.getSource();
+        } else if(actionEvent.getSource() instanceof TextField) {
+            src = add;
+        }
+
         if(NewFormVBox.getChildren().size()>2) {
             NewFormVBox.getChildren().remove(2);
         }
@@ -75,5 +81,9 @@ public class NewForm {
             NewFormVBox.getChildren().add(errLabel);
         }
 
+    }
+
+    public void enterPressed(ActionEvent actionEvent) {
+        System.out.println(actionEvent.getSource().getClass());
     }
 }

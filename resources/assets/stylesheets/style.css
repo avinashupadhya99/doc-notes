@@ -17,3 +17,13 @@ AnchorPane {
     -fx-background-color: bbbbbb;
     -fx-cursor: hand;
 }
+
+.text-area {
+    text-area-background: bbbbbb ;
+    -fx-font-size: 25;
+    -fx-border: none;
+}
+
+.text-area .content {
+    -fx-background-color: text-area-background ;
+}
