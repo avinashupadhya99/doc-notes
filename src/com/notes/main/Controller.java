@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -37,7 +38,7 @@ public class Controller implements Initializable {
      * Have an array list of Sub headings. Pass it to the New form and ask for position. (Feature)
      */
 
-    public Button addNewNotes;
+    public Button addNewNote;
     public Label Heading;
     public ScrollPane mainScrollPane;
     public VBox centerVBox;
@@ -48,16 +49,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    }
-
-    @FXML
-    public void addNotes(ActionEvent e) {
-        Button btn = (Button) e.getSource();
-        VBox sidebar = (VBox) btn.getParent();
-        HBox subHeadingHBox = (HBox) sidebar.getParent();
-        VBox subHeadingVBox = (VBox) subHeadingHBox.getChildren().get(0);
-        TextField newNotes = new TextField();
-        subHeadingVBox.getChildren().add(newNotes);
     }
 
 
@@ -144,6 +135,38 @@ public class Controller implements Initializable {
             VBox mainVBox = (VBox) anchorPane.getParent();
             mainVBox.getChildren().remove(anchorPane);
             subHeadingList.remove(title);
+            //TODO: Remove notes from the persisting object
+        }
+    }
+
+    @FXML
+    public void addNote(ActionEvent actionEvent) {
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(Controller.class.getResource("../util/Note.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Button btn = (Button) actionEvent.getSource();
+        VBox sidebar = (VBox) btn.getParent();
+        HBox subHeadingHBox = (HBox) sidebar.getParent();
+        VBox subHeadingVBox = (VBox) subHeadingHBox.getChildren().get(0);
+        subHeadingVBox.getChildren().add(root);
+    }
+
+    public void saveNote(ActionEvent actionEvent) {
+        TextField noteTextField = (TextField) actionEvent.getSource();
+        noteTextField.setEditable(false);
+        noteTextField.getStyleClass().add("note");
+        //TODO: Add this note for persisting
+
+    }
+
+    public void editNote(MouseEvent mouseEvent) {
+        if(mouseEvent.getClickCount()==2) {
+            TextField noteTextField = (TextField) mouseEvent.getSource();
+            noteTextField.setEditable(true);
+            noteTextField.getStyleClass().remove("note");
         }
     }
 }
