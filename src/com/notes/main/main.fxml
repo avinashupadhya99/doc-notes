@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.input.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -15,7 +16,10 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-                <MenuItem fx:id="Save" mnemonicParsing="false" onAction="#saveApp" text="Save" />
+                <MenuItem fx:id="Save" onAction="#saveApp" text="Save">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator></MenuItem>
                 <MenuItem fx:id="Close" mnemonicParsing="false" onAction="#closeApp" text="Close" />
             </items>
           </Menu>
@@ -45,7 +49,7 @@
                   <HBox>
                      <children>
                         <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="371.0" HBox.hgrow="ALWAYS" />
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#addSubHeading" prefHeight="31.0" prefWidth="189.0" text="Add new Sub Heading">
+                        <Button alignment="CENTER" onAction="#addSubHeading" prefHeight="31.0" prefWidth="189.0" text="Add new _Sub Heading">
                            <font>
                               <Font name="KacstPoster" size="15.0" />
                            </font>

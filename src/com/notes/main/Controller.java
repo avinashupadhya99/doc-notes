@@ -16,7 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -43,12 +43,15 @@ public class Controller implements Initializable {
     public ScrollPane mainScrollPane;
     public VBox centerVBox;
     public MenuItem Close;
+    public MenuItem Save;
     private boolean unsaved = true;
     public static HashSet<String> subHeadingList = new HashSet<>();;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+//        KeyCombination kc = new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN);
+//        Save.setAccelerator(kc);
     }
 
 
@@ -71,9 +74,9 @@ public class Controller implements Initializable {
         List<String> subHeadingList = new ArrayList<>();
         for(Node node: children) {
             if(node instanceof AnchorPane) {
-                VBox subheadingVBox = (VBox) ((AnchorPane) node).getChildren().get(0);
-                HBox subheadingHBox = (HBox) subheadingVBox.getChildren().get(0);
-                Label subheadingLabel = (Label) subheadingHBox.getChildren().get(0);
+                HBox subheadingHBox = (HBox) ((AnchorPane) node).getChildren().get(0);
+                VBox subheadingVBox = (VBox) subheadingHBox.getChildren().get(0);
+                Label subheadingLabel = (Label) subheadingVBox.getChildren().get(0);
                 subHeadingList.add(subheadingLabel.getText());
             }
         }
@@ -152,6 +155,12 @@ public class Controller implements Initializable {
         HBox subHeadingHBox = (HBox) sidebar.getParent();
         VBox subHeadingVBox = (VBox) subHeadingHBox.getChildren().get(0);
         subHeadingVBox.getChildren().add(root);
+        TextField note = (TextField) root.getChildrenUnmodifiable().get(0);
+        note.requestFocus();
+        note.setText("fd");
+        ContextMenu cm = new ContextMenu();
+        cm.getItems().add(new MenuItem("Delete"));
+        note.setContextMenu(cm);
     }
 
     public void saveNote(ActionEvent actionEvent) {

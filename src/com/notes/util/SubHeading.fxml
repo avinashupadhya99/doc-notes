@@ -41,7 +41,7 @@
                   <Line endX="100.0" startX="-100.0" />
                   <Button mnemonicParsing="false" onAction="#deleteSubHeading" text="Delete Sub Heading" />
                   <Line endX="100.0" startX="-100.0" />
-                  <Button fx:id="addNewNote" mnemonicParsing="false" onAction="#addNote" text="Add Note" />
+                  <Button fx:id="addNewNote" onAction="#addNote" text="Add _Note" />
                   <Line endX="100.0" startX="-100.0" />
                   <Button mnemonicParsing="false" text="Add command" />
                   <HBox alignment="CENTER_LEFT" />

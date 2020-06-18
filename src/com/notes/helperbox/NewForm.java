@@ -2,10 +2,14 @@ package com.notes.helperbox;
 
 import com.notes.main.Controller;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -13,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
 
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.HashSet;
 
