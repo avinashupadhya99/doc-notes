@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+<ScrollPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.notes.main.Controller" fx:id="mainScrollPane" fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+<content>
+    <VBox fx:id="centerVBox" alignment="TOP_CENTER" prefHeight="279.0" prefWidth="597.0" BorderPane.alignment="CENTER">
+        <children>
+            <Label fx:id="Heading" alignment="CENTER" prefHeight="60.0" prefWidth="597.0" text="HEADING">
+                <font>
+                    <Font size="50.0" />
+                </font>
+            </Label>
+            <HBox>
+                <children>
+                    <Region maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="371.0" HBox.hgrow="ALWAYS" />
+                    <Button alignment="CENTER" onAction="#addSubHeading" prefHeight="31.0" prefWidth="189.0" text="Add new _Sub Heading">
+                        <font>
+                            <Font name="KacstPoster" size="15.0" />
+                        </font>
+                        <HBox.margin>
+                            <Insets right="40.0" />
+                        </HBox.margin>
+                    </Button>
+                </children>
+            </HBox>
+
+        </children>
+    </VBox>
+</content>
+</ScrollPane>

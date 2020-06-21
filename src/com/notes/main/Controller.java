@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -44,15 +45,15 @@ public class Controller implements Initializable {
     public VBox centerVBox;
     public MenuItem Close;
     public MenuItem Save;
+    public BorderPane borderPane;
     private boolean unsaved = true;
     public static HashSet<String> subHeadingList = new HashSet<>();;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        KeyCombination kc = new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN);
-//        Save.setAccelerator(kc);
     }
+
 
 
     public void closeApp(ActionEvent actionEvent) {
@@ -157,7 +158,6 @@ public class Controller implements Initializable {
         subHeadingVBox.getChildren().add(root);
         TextField note = (TextField) root.getChildrenUnmodifiable().get(0);
         note.requestFocus();
-        note.setText("fd");
         ContextMenu cm = new ContextMenu();
         cm.getItems().add(new MenuItem("Delete"));
         note.setContextMenu(cm);
